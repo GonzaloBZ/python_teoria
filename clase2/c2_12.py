@@ -3,21 +3,37 @@
 # ¿cuántos estudiantes están por debajo del promedio?
 
 
-def menores_al_promedio(promedio, lista):
+def menores_al_promedio(prom, lista):
+    """Esta función retorna la cantidad de alumnos con
+    notas por debajo del promedio."""
     tot = 0
     for nota in lista:
-        if nota < promedio:
+        if nota < prom:
             tot += 1
     return tot
 
 
-lista = []
-total = 0
-nota = int(input("Ingrese una nota: "))
-while nota != -1:
-    lista.append(nota)
-    total += nota
+def leer_notas():
+    """Esta función retorna una lista con notas de estudiantes."""
+    liszt = []
     nota = int(input("Ingrese una nota: "))
-promedio = total / len(lista)
-print(f"El promedio de las notas de todos los alumnos es: {promedio}")
-print(f"Cantidad de alumnos cuyas notas son menores al promedio: {menores_al_promedio(promedio, lista)}")
+    while nota != -1:
+        liszt.append(nota)
+        nota = int(input("Ingrese una nota: "))
+    return liszt
+
+
+def promedio(lista):
+    """Esta función retorna el promedio de notas de los estudiantes."""
+    total = 0
+    for nota in lista:
+        total += nota
+    return total / len(lista)
+
+
+lista = leer_notas()
+prom = promedio(lista)
+print(f"El promedio de las notas de todos los alumnos es: {prom}")
+print(
+    f"Cantidad de alumnos cuyas notas son menores al promedio: {menores_al_promedio(prom, lista)}"
+)
