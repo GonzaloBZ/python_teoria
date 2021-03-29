@@ -62,6 +62,15 @@ words = {
     "Shapes": "square triangle rectangle circle ellipse rhombus trapazoid chevron pentagon hexagon septagon octogon".split(),
     "Fruits": "apple orange lemon lime pear watermelon grape grapefruit cherry banana cantalope mango strawberry tomato".split(),
     "Animals": "bat bear beaver cat cougar crab deer dog donkey duck eagle fish frog goat leech lion lizard monkey moose mouse otter owl panda python rabbit rat shark sheep skunk squid tiger turkey turtle weasel whale wolf wombat zebra".split(),
+    "Rock bands": "riff hermetica molotov sumo apocalyptica".split(),
+}
+
+clues = {
+    "riff": "The first true hard-rock band in Argentina.",
+    "hermetica": "The most important trash-metal band in South America.",
+    "molotov": "A band with two bass players.",
+    "sumo": "An Argentine rock-reggae band founded by an Italian.",
+    "apocalyptica": "A band that decided to play metal songs with classical instruments.",
 }
 
 
@@ -148,6 +157,10 @@ while True:
     print("The secret word is in the set: " + secret_set)
     display_board(missed_letters, correct_letters, secret_word)
 
+    # Añado esto para que imprima la pista en el caso que sea una banda.
+    if secret_set == "Rock bands":
+        print(f"Clue: {clues[secret_word]}")
+
     # Let the player type in a letter.
     guess = get_guess(missed_letters + correct_letters)
 
@@ -169,6 +182,9 @@ while True:
         # Check if player has guessed too many times and lost.
         if len(missed_letters) == len(HANGMAN_PICS) - 1:
             display_board(missed_letters, correct_letters, secret_word)
+            # Añado esto para que imprima la pista en el caso que sea una banda.
+            if secret_set == "Rock bands":
+                print(f"Clue: {clues[secret_word]}")
             print(
                 "You have run out of guesses!\nAfter "
                 + str(len(missed_letters))
