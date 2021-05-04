@@ -17,7 +17,12 @@ layout = [
     [sg.Button("Salir", size=bot_size, pad=pad_bot_exit, key="-SALIR-")],
 ]
 
-window = sg.Window("Actividad 1 x Python Plus - TEORÍA -", layout, margins=(80, 0))
+window = sg.Window(
+    "Actividad 1 x Python Plus - TEORÍA -",
+    layout,
+    margins=(80, 0),
+    no_titlebar=True,
+)
 
 
 def estructurar_datos(arch, arch_path):
